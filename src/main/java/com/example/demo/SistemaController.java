@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -31,29 +34,43 @@ public class SistemaController {
 	}
 	//localhost:8080/show-storage
 	@GetMapping("/show-storage")
-	public	String showStorage() {
-		return this.systemMng.printStock();
+	public	String showStorage(Model m1) {
+		m1.addAttribute("storage",  this.systemMng.getStock());
+		return "show-storage";
 	}
 	//Update a price of a product
-	@PatchMapping("update-price/{id}")
-	public ResponseEntity<Produto>  updatePrice(@PathVariable("id") int id, Double newPrice){
+	@PostMapping("/update-price")
+	public String  updatePrice(@RequestParam("Product Code") int id, @RequestParam("New Price") Double newPrice, Model m1){
 		try {
 			this.systemMng.updatePrice(id, newPrice);
 		} catch (ProductNotFoundException e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<>(HttpStatus.OK);
+		String x = "The price was updated";
+		m1.addAttribute("message",x);
+//		return new ResponseEntity<>("update-price",HttpStatus.OK);
+		return "update-price-answer";
+	}
+	@GetMapping("/update-price")
+	public String  updatePrice(Model m1){
+		return "update-price";
 	}
 	//add product on the stock
-	@PutMapping("/add-product")
-	public ResponseEntity<Integer> addProduct(int cod, String name, Double price, int amount){
+	
+	@PostMapping("/add-product")
+	public ResponseEntity<Integer> addProduct(@RequestParam("Product Code") int cod,@RequestParam("Name") String name,
+											  @RequestParam("Price")Double price,   @RequestParam("Amount") int amount){
 		Integer prodCode = null;
 		try {
 			prodCode = this.systemMng.addProduct(new Produto(name, cod, price),amount);
 		} catch (ProductNotFoundException | ProductCodeAlreadyExistsException e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<>(prodCode,HttpStatus.CREATED);
+		return new ResponseEntity<>(prodCode,HttpStatus.OK);
+	}
+	@GetMapping("/add-product")
+	public String addProduct(){
+		return  "add-product";
 	}
 	//adds a product on a sale
 	@PutMapping("/addProduct/{saleID}")

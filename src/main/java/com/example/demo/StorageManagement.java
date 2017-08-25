@@ -16,4 +16,5 @@ public interface StorageManagement {
 	void setPrice(Double price, int id) throws ProductNotFoundException;
 	public String toString() ;
 	public Boolean exitsProduct(Integer id);
+	public Iterable<StorageProduct> getStorage();
 }

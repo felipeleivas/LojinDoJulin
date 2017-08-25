@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+      <form th:action="@{/update-price}" method="post">
+            <div><label> id: <input type="text" name="Product Code"/> </label></div>
+            <div><label> newPrice: <input type="text" name="New Price"/> </label></div>
+            <div><input type="submit" value="Update"/></div>
+        </form>
+</body>
+</html> 

@@ -150,4 +150,8 @@ public class Sistema implements SystemInterface{
 			throw new SaleNotFoundException();
 		}
 	}
+	@Override
+	public Iterable<StorageProduct> getStock() {
+		return this.stock.getStorage();
+	}
 }

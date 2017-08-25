@@ -19,4 +19,5 @@ public interface SystemInterface {
 	public Iterable<FinalSale> getSales();
 	public Long createSale() ;
 	public FinalSale getFinalSale(Long id) throws SaleNotFoundException;
+	public Iterable<StorageProduct> getStock();
 }

@@ -134,6 +134,10 @@ public class Storage implements StorageManagement {
 	@Override
 	public Boolean exitsProduct(Integer id) {
 		return this.stock.exists(id);	}
+	@Override
+	public Iterable<StorageProduct> getStorage() {
+		return this.stock.findAll();
+	}
 	
 	
 }

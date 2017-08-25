@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table border="2" >
+  <thead>
+    <tr>
+      <th th:text="Name">Name</th>
+      <th th:text="Code">cod</th>
+      <th th:text="Price">Price</th>
+      <th th:text="Amount">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="product: ${storage}">
+      <td th:text="${product.prod.name}" >Banana</td>
+      <td th:text="${product.prod.cod}" >Banana</td>
+      <td th:text= "'$ ' + ${#numbers.formatDecimal(product.prod.price, 1, 2)}">584643453435</td>
+      <td th:text= "${product.amountStorage}">3435</td>
+      
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
