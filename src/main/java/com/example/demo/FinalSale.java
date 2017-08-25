@@ -61,7 +61,7 @@ public class FinalSale {
 		public BigDecimal getTotalPrice() {
 			BigDecimal total = BigDecimal.ZERO;
 			for(ProductSale tempSale: sales) {
-				total = total.add( tempSale.getTotalprice());
+				total = total.add( tempSale.getSubTotalPrice());
 			}
 			return total;
 			

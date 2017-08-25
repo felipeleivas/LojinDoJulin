@@ -21,7 +21,7 @@ public class ProductSale {
 	@JoinColumn(name = "prod")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Produto product;
-	private BigDecimal subTotalprice;
+	private BigDecimal subTotalPrice;
 	
 	
 	/** Given a Product and a amount, calculates the total price of the sale of this product
@@ -33,7 +33,7 @@ public class ProductSale {
 		this.amount = amount;
 		this.product = product;
 		BigDecimal amout_aux = new BigDecimal(this.amount);
-		this.subTotalprice = product.getPrice().multiply(amout_aux) ; 
+		this.subTotalPrice = product.getPrice().multiply(amout_aux) ; 
 	}
 	public ProductSale() {
 		
@@ -47,12 +47,12 @@ public class ProductSale {
 		return product;
 	}
 
-	public BigDecimal getTotalprice() {
-		return subTotalprice;
+	public BigDecimal getSubTotalPrice() {
+		return subTotalPrice;
 	}
 	
 	public String toString() {
-		return product.toString() + "\tVendidas: " + amount.toString() + "\tPreço total: " + subTotalprice.toString();
+		return product.toString() + "\tVendidas: " + amount.toString() + "\tPreço total: " + subTotalPrice.toString();
 	}
 
 }

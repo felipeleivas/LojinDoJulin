@@ -73,8 +73,8 @@ public class SistemaController {
 		return  "add-product";
 	}
 	//adds a product on a sale
-	@PutMapping("/addProduct/{saleID}")
-	public ResponseEntity<Void>  addProductSale(@PathVariable("saleID") Long id, int prodCod, int amount){
+	@PostMapping("/addProduct-on-sale")
+	public ResponseEntity<Void>  addProductSale(@RequestParam("Sale Code") Long id,@RequestParam("Product Code") int prodCod,@RequestParam("Amount") int amount){
 		try {
 			this.systemMng.addProductSaleOnASale(id, new Sale(prodCod, amount));
 		} 
@@ -83,16 +83,23 @@ public class SistemaController {
 		}			
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@GetMapping("/addProduct-on-sale")
+	public String  addProductSale(){	
+		return "addProduct-on-sale";
+	}
 	//Create a empty sale;
 	@PutMapping("/createSale")
 	public ResponseEntity<Long> createSale(){
 		Long id=  this.systemMng.createSale();
 		return new ResponseEntity<>(id,HttpStatus.CREATED);
 	}
+	
 	//Show all sales
 	@GetMapping("/showsales")
-	public Iterable<FinalSale> showSales(){
-		return this.systemMng.getSales();
+	public String showSales(Model m1){
+		m1.addAttribute("allSales",this.systemMng.getSales());
+		return "show-sales";
 	}
 	
 	@GetMapping("/getsale/{id}")
