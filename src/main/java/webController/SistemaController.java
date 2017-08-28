@@ -1,7 +1,4 @@
-package com.example.demo;
-
-import java.util.ArrayList;
-
+package webController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,16 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.FinalSale;
+import com.example.demo.Produto;
+import com.example.demo.Sale;
+import com.example.demo.SystemInterface;
 
-
-import Exceptions.NotEnoughtInStockException;
 import Exceptions.ProductCodeAlreadyExistsException;
 import Exceptions.ProductNotFoundException;
 import Exceptions.SaleNotFoundException;
