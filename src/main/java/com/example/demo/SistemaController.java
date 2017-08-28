@@ -90,9 +90,10 @@ public class SistemaController {
 	}
 	//Create a empty sale;
 	@PutMapping("/createSale")
-	public ResponseEntity<Long> createSale(){
-		Long id=  this.systemMng.createSale();
-		return new ResponseEntity<>(id,HttpStatus.CREATED);
+	public String createSale(Model m1){
+		Long id =  this.systemMng.createSale();
+		m1.addAttribute(id);
+		return "createSale";
 	}
 	
 	//Show all sales
@@ -102,13 +103,18 @@ public class SistemaController {
 		return "show-sales";
 	}
 	
-	@GetMapping("/getsale/{id}")
-	public ResponseEntity<FinalSale> getSale(@PathVariable("id") Long id) {
+	@GetMapping("/getsale")
+	public String getSale(@RequestParam("id") Long id,Model m1) {
 		try {
 			FinalSale sale = this.systemMng.getFinalSale(id);
-			return new ResponseEntity<FinalSale>(sale,HttpStatus.OK);
+			m1.addAttribute("sale",sale);
 		} catch (SaleNotFoundException e) {
-			return new ResponseEntity<FinalSale>(HttpStatus.NOT_FOUND);
+			return "Error";
 		}
+		return "show-sales-id";
+	}
+	@GetMapping("/getsale2")
+	public String getSale2(Model m1) {
+		return "show-sales2-id";
 	}
 }
