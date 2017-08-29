@@ -5,10 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+	<br/>
       <form th:action="@{/update-price}" method="post">
             <div><label> id: <input type="text" name="Product Code"/> </label></div>
             <div><label> newPrice: <input type="text" name="New Price"/> </label></div>
             <div><input type="submit" value="Update"/></div>
+        </form>
+       <br/>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
         </form>
 </body>
 </html> 

@@ -1,4 +1,4 @@
-package webController;
+package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.example.demo.FinalSale;
-import com.example.demo.Produto;
-import com.example.demo.Sale;
-import com.example.demo.SystemInterface;
 
 import Exceptions.ProductCodeAlreadyExistsException;
 import Exceptions.ProductNotFoundException;

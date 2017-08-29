@@ -9,13 +9,14 @@
   <thead>
     <tr>
       <th th:text="SaleID">SaleId</th>
-      <th th:text="Sales">SaleId</th>
+      <th th:text="Sales">Sal2eId</th>
+      
     </tr>
   </thead>
   <tbody>
   	
   	<tr th:each ="sales: ${allSales}">
- 		<td th:text = "${sales.saleId}"> iu </td>
+ 		<td th:text = "${sales.saleId}"> </td>
 				  	<table border= "2" >
 				  <thead>
 				    <tr>
@@ -39,5 +40,9 @@
 	
   </tbody>
 </table>
+	<br/>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
 </body>
 </html>

@@ -1,7 +1,5 @@
 package consuming;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -13,12 +11,13 @@ import java.util.Scanner;
 
 public class Application {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+  
+	private static Scanner keyboard;
 
     public static void main(String args[]) {
         int choise = 0;
     	do {
-    		Scanner keyboard = new Scanner(System.in);
+    		keyboard = new Scanner(System.in);
     		keyboard.useLocale(Locale.US);
     		System.out.println("Enter the number that represents what you wanna do: "
     				+ 		   "0 - Exit\n"
@@ -96,8 +95,7 @@ public class Application {
 				}
     		}
     		case 5:{
-    			Long saleCod;
-				ResponseEntity<Long> x2 = restTemplate.postForEntity("http://localhost:8080/createSale",null,Long.class);
+    			ResponseEntity<Long> x2 = restTemplate.postForEntity("http://localhost:8080/createSale",null,Long.class);
 				if(x2.getStatusCode() == HttpStatus.CREATED) {
 					System.out.println("The sale was created, and the sale code is: "+x2.getBody());
 				}

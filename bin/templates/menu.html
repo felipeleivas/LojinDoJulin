@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Spring Security Example</title>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+
+        <p>Click <a th:href="@{/show-storage}"		>here</a> to see the storage.</p>
+        <p>Click <a th:href="@{/update-price}"		>here</a> to update a price of a product.</p>
+        <p>Click <a th:href="@{/add-product}" 		>here</a> to add a product in the storage.</p>
+        <p>Click <a th:href="@{/addProduct-on-sale}">here</a> to add a product on a sale.</p>
+        <p>Click <a th:href="@{/createSale}"		>here</a> to create a new sale.</p>
+        <p>Click <a th:href="@{/showsales}"			>here</a> to show all sales.</p>
+        <p>Click <a th:href="@{/getsale2}"			>here</a> to see a specified sale.</p>
+    	
+    	<br/>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </body>
+</html>
